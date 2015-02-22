@@ -84,6 +84,6 @@ meanAndStrData <- labelDatasetVariables(meanAndStrData, meanAndStdFeaturesLabels
 
 # Step 5
 tidyData <- averageVariablesPerAcitivityAndSubject(meanAndStrData)
-print(summary(tidyData))
+
 # Write tidy data set to a text file
 write.table(tidyData, file="tidy_data.txt", row.name=FALSE)

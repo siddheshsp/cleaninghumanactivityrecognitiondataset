@@ -1,7 +1,15 @@
 
-library(dplyr)
+# Cleaning a Data Set for Human Activity Recognition Using Smartphones in R
+# Copyright (C) 2015  Ahmad Al-Kashef
+# This program comes with ABSOLUTELY NO WARRANTY; for details see LICENSE.txt.
+# This is free software, and you are welcome to redistribute it
+# under certain conditions; see LICENSE.txt for details.
 
 #-------------------------------------------------------------------------------
+
+library(dplyr)
+
+# Helper functions -------------------------------------------------------------
 
 mergeTrainingAndTestSets <- function() {
 
@@ -65,25 +73,25 @@ averageVariablesPerAcitivityAndSubject <- function(dataset) {
 
 }
 
-#-------------------------------------------------------------------------------
+# Cleaning the dataset ---------------------------------------------------------
 
-# Step 1
+# Step 1: merge training and test data sets
 mergedData <- mergeTrainingAndTestSets()
 
-# Step 2
+# Step 2: extract mean and str features only
 meanAndStdFeatures <- extractMeanAndStdFeatures()
 meanAndStrData <- mergedData[c(meanAndStdFeatures$V1, 562, 563)]
 
-# Step 3
+# Step 3: label activities descriptively
 activityLabels <- loadActivityLabels()
 meanAndStrData <- applyActivityLabels(meanAndStrData, activityLabels)
 
-# Step 4
+# Step 4: label all the data set variables
 meanAndStdFeaturesLabels <- as.character(meanAndStdFeatures$V2)
 meanAndStrData <- labelDatasetVariables(meanAndStrData, meanAndStdFeaturesLabels)
 
-# Step 5
+# Step 5: generate a new table with feature averages per acitivity and subject
 tidyData <- averageVariablesPerAcitivityAndSubject(meanAndStrData)
 
-# Write tidy data set to a text file
+# Step 6: write the data set generated in step 5 to a text file
 write.table(tidyData, file="tidy_data.txt", row.name=FALSE)

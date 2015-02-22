@@ -1,4 +1,8 @@
 
+# Cleaning a Data Set for Human Activity Recognition Using Smartphones in R #
+
+<br/>
+
 ## Objective ##
 The objective of this project is to collect, work with and cleaning a data set to be used for later analysis.
 
@@ -61,3 +65,6 @@ Appropriately labels the data set with descriptive variable names:
 
 ### Step 5 ###
 From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+
+### Step 6 ###
+Write the new data set to a text file using *write.table()* with *row.name=FALSE*. 
